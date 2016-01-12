@@ -7,6 +7,9 @@ var netBox = {
 			'overflowY': 'auto'
 }
 var netFiles = {
+			'-webkit-box-shadow': '9px 10px 20px 0px rgba(0,0,0,0.33)',
+			'-moz-box-shadow': '9px 10px 20px 0px rgba(0,0,0,0.33)',
+			'box-shadow': '9px 10px 20px 0px rgba(0,0,0,0.33)',
 			'width': '300px',
 			'backgroundColor': 'rgba(255, 255, 255, 1)',
 			'border': 'solid 1px',

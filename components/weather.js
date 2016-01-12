@@ -145,7 +145,6 @@ function initWeather(data){
 /////////////------------------------------------------------------------------------
 /////////////---------------------FUNCTIONS------------------------------------------
 
-
 		$(function() {
 		    $('body').on('mousedown', '#weatherBox', function() {
 		        $(this).addClass('draggable').parents().on('mousemove', function(e) {
