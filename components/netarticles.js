@@ -121,7 +121,7 @@ var footertwit = {
 }
 var readMoreLegend = {
 		    'width': '105px',
-		    'height': '30px',
+		    'height': '20px',
 		    'float': 'right',
 		    'textAlign': 'center',
 		    'paddingTop': '7px',

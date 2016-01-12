@@ -31,15 +31,15 @@ var menuItemBox = {
 }
 var submenu = {
 	'height': '80px',
-	'width': '70%',
+	'width': '60%',
 	'position': 'absolute',
 	'top': '0px',
-	'left': '-70%',
+	'left': '-60%',
 	'backgroundColor': 'rgba(90, 90, 90, 1)',
 	'borderRadius': '0px 0px 3px 3px',
 	'overflow': 'hidden',
 	'paddingLeft': '100px',
-	'transition': 'all 0.5s ease-in-out'
+	'transition': 'all 0.5s ease-in-out 0.1s'
 }
 var submenuActive = {
 	'height': '80px',
@@ -50,13 +50,14 @@ var submenubutton = {
 	'width': '15%',
 	'color': 'yellow',
 	'float': 'left',
+  	'padding': '0px 10px',
 	'textTransform': 'uppercase',
   	'fontWeight': 'bolder',
   	'fontSize': '45px',
   	'lineHeight': '77px',
   	'textAlign': 'center',
   	'cursor': 'pointer',
-	'transition': 'all 0.5s ease-in-out'
+	'transition': 'all 0.2s ease-in-out'
 }
 
 /////////////-------------------------------------------------------------------------
@@ -103,7 +104,7 @@ function init(data){
 			    	}
 		    	}
 		    	else{
-		    		$('#submenu').css('left','-70%')
+		    		$('#submenu').css('left','-60%')
 		    		lol.target.style.height = '45px'
 		    		lol.target.parentNode.style.top = '0px'
 		    		lol.target.parentNode.parentNode.style.height = '300px'
