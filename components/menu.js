@@ -27,7 +27,7 @@ var menuItemBox = {
   	'cursor': 'pointer',
   	'lineHeight': '40px',
   	'opacity': '1',
-	'transition': 'all 0.5s ease-in-out'
+	'transition': 'all 0.2s ease-in-out'
 }
 var submenu = {
 	'height': '80px',
@@ -47,10 +47,9 @@ var submenuActive = {
 }
 var submenubutton = {
 	'height': '80px',
-	'width': '15%',
 	'color': 'yellow',
 	'float': 'left',
-  	'padding': '0px 10px',
+  	'padding': '0px 20px',
 	'textTransform': 'uppercase',
   	'fontWeight': 'bolder',
   	'fontSize': '45px',
@@ -67,16 +66,24 @@ var submenubutton = {
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
+var menuElementsList = [
+			{'main': 'main','sub':['components','features','some','thing']},
+			{'main': 'notices','sub':['local','national','international']},
+			{'main': 'weather','sub':['national','global','max','min']},
+			{'main': 'about','sub':['me','enterprise','corp.','place']},
+			{'main': 'contact','sub':['mail','suscribe','newsletter','phone']}
+]
+
+var curretSubMenuList = menuElementsList[0].sub;
+
 init();
 
 function init(data){
-	var Menu = React.createClass({
+	var SubMenuItem = React.createClass({
 			getInitialState: function(){
 				return {
+					data: menuElementsList
 				}
-			},
-			componentWillMount: function () {
-			   
 			},
 			handleMouseOver: function(lol) {
 			   lol.target.style.backgroundColor = 'rgba(255, 255, 255, 0.4)'
@@ -84,16 +91,49 @@ function init(data){
 			handleMouseOut: function(lol) {
 			   lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0)'
 			},
+			render: function(){
+				return(
+					<div id="submenu2" style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >{this.props.data}</div>
+				)	
+			}
+	})
+	var SubMenuList = React.createClass({
+			render: function(){
+				console.log(this.props.data)
+				return(
+					<div id="submenu" style={submenu}>
+						<div style={submenuActive}>
+							{ this.props.data.map(function(element,i){return (<SubMenuItem data={element}></SubMenuItem>)}) }
+						</div>
+					</div>
+				)
+			}
+	})
+	var Menu = React.createClass({
+			getInitialState: function(){
+				return {
+					data: menuElementsList
+				}
+			},
+			componentWillMount: function () {
+			   
+			},
+			handleMouseOver: function(lol) {
+			   if(lol.target.attributes['data-actived'].value == 'false') lol.target.style.backgroundColor = 'rgba(255, 255, 255, 0.4)'
+			},
+			handleMouseOut: function(lol) {
+			   if(lol.target.attributes['data-actived'].value == 'false') lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+			},
 		    handleRemove: function(i) {
 		    },
 		    menuTransform: function(i,lol) {
-		    	console.log(lol.target.parentNode.children.length)
 		    	var topValue = ['0px', '-75px', '-135px', '-190px', '-245px']
 		    	var activeStatus = lol.target.attributes['data-actived'].value;	
-			    var menuChildLength = lol.target.parentNode.children.length
+			    var menuChildLength = lol.target.parentNode.children.length;
 
 		    	if(activeStatus == 'false') {
 		    		$('#submenu').css('left','230px')
+		    		lol.target.style.backgroundColor = 'rgba(255, 255, 255, 0.4)'
 		    		lol.target.parentNode.style.top = topValue[i]
 		    		lol.target.parentNode.parentNode.style.height = '80px'
 		    		lol.target.style.height = '90px'
@@ -115,24 +155,18 @@ function init(data){
 		    	}
 		    },
 			render: function() {
+		    	var propertiesList = [{'fontSize': '80px', 'padding': '17px 20px'}, {'fontSize': '56px'},{'fontSize': '45px'},{'fontSize': '51px'},{'fontSize': '22px', 'padding': '0px 20px'}]
+				var indents = this.state.data.map(function(item, i){
+					return (
+						<div onClick={this.menuTransform.bind(this,i)} style={$.extend({}, menuItemBox, propertiesList[i] )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>{item.main}</div>
+					)
+				}.bind(this));
 				return (
 					<div>
-						<div id="submenu" style={submenu}>
-							<div style={submenuActive}>
-								<div style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >menu1</div>
-								<div style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >menu2</div>
-								<div style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >menu3</div>
-								<div style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >menu4</div>
-								<div style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >menu5</div>
-							</div>
-						</div>
+						<SubMenuList data={curretSubMenuList}></SubMenuList>
 						<div id="menu" style={menuMainBox}>
 							<div id="itemGroupBox" style={itemGroupBox}>
-								<div onClick={this.menuTransform.bind(this,0)} style={$.extend({}, menuItemBox, {'fontSize': '80px', 'padding': '17px 20px' } )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>main</div>
-								<div onClick={this.menuTransform.bind(this,1)} style={$.extend({}, menuItemBox, {'fontSize': '56px' } )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>notices</div>
-								<div onClick={this.menuTransform.bind(this,2)} style={$.extend({}, menuItemBox, {'fontSize': '45px' } )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>weather</div>
-								<div onClick={this.menuTransform.bind(this,3)} style={$.extend({}, menuItemBox, {'fontSize': '51px' } )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>about</div>
-								<div onClick={this.menuTransform.bind(this,4)} style={$.extend({}, menuItemBox, {'fontSize': '22px', 'padding': '0px 20px' } )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>contact</div>
+								{indents}
 							</div>					
 						</div>
 					</div>
