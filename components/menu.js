@@ -1,8 +1,8 @@
 /////////////---------------------STYLES ---------------------------------------------
 
 var menuMainBox = {
-	'height': '300px',
-	'width': '300px',
+	'height': '200px',
+	'width': '200px',
 	'position': 'absolute',
 	'top': '0px',
 	'left': '0px',
@@ -19,18 +19,18 @@ var itemGroupBox = {
 }
 var menuItemBox = {
 	'width': '120%',
-	'height': '45px',
 	'color': 'yellow',
 	'textTransform': 'uppercase',
   	'fontWeight': 'bolder',
-  	'padding': '6px 20px',
+  	'padding': '0px 20px',
   	'cursor': 'pointer',
-  	'lineHeight': '40px',
   	'opacity': '1',
-	'transition': 'all 0.2s ease-in-out'
+  	'height': '100%',
+  	'borderLeft': '6px solid rgba(255, 255, 0, 0)',
+	'transition': 'all 0.4s ease-in-out'
 }
 var submenu = {
-	'height': '80px',
+	'height': '60px',
 	'width': '60%',
 	'position': 'absolute',
 	'top': '0px',
@@ -42,18 +42,18 @@ var submenu = {
 	'transition': 'all 0.5s ease-in-out 0.1s'
 }
 var submenuActive = {
-	'height': '80px',
+	'height': '60px',
 	'width': '100%'
 }
 var submenubutton = {
-	'height': '80px',
+	'height': '60px',
 	'color': 'yellow',
 	'float': 'left',
   	'padding': '0px 20px',
 	'textTransform': 'uppercase',
   	'fontWeight': 'bolder',
-  	'fontSize': '45px',
-  	'lineHeight': '77px',
+  	'fontSize': '19px',
+  	'lineHeight': '63px',
   	'textAlign': 'center',
   	'cursor': 'pointer',
 	'transition': 'all 0.2s ease-in-out'
@@ -64,7 +64,7 @@ var submenubutton = {
 
 'use strict';
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var menuElementsList = [
 			{'main': 'main','sub':['components','features','some','thing']},
@@ -74,7 +74,10 @@ var menuElementsList = [
 			{'main': 'contact','sub':['mail','suscribe','newsletter','phone']}
 ]
 
-var curretSubMenuList = menuElementsList[0].sub;
+
+var propertiesList = [{'fontSize': '67px', 'padding': '0px 10px'}, {'fontSize': '35px'},{'fontSize': '26px'},{'fontSize': '26px'},{'fontSize': '15px', 'padding': '0px 10px'}]
+
+var curretSubMenuList = menuElementsList[0].sub
 
 init();
 
@@ -119,24 +122,30 @@ function init(data){
 			   
 			},
 			handleMouseOver: function(lol) {
-			   if(lol.target.attributes['data-actived'].value == 'false') lol.target.style.backgroundColor = 'rgba(255, 255, 255, 0.4)'
+			   if(lol.target.attributes['data-actived'].value == 'false'){
+			   		lol.target.style['border-left'] = '6px solid rgba(255, 255, 0, 1)'
+			   		lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0.4)'
+			   } 
 			},
 			handleMouseOut: function(lol) {
-			   if(lol.target.attributes['data-actived'].value == 'false') lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+			   if(lol.target.attributes['data-actived'].value == 'false') {
+			   		lol.target.style['border-left'] = '6px solid rgba(255, 255, 0, 0)'
+			   		lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+			   }
 			},
 		    handleRemove: function(i) {
 		    },
 		    menuTransform: function(i,lol) {
-		    	var topValue = ['0px', '-75px', '-135px', '-190px', '-245px']
+		    	var topValue = ['0px', '-72px', '-110px', '-137px', '-165px']
 		    	var activeStatus = lol.target.attributes['data-actived'].value;	
 			    var menuChildLength = lol.target.parentNode.children.length;
 
 		    	if(activeStatus == 'false') {
-		    		$('#submenu').css('left','230px')
-		    		lol.target.style.backgroundColor = 'rgba(255, 255, 255, 0.4)'
-		    		lol.target.parentNode.style.top = topValue[i]
-		    		lol.target.parentNode.parentNode.style.height = '80px'
+		    		$('#submenu').css('left','130px')
 		    		lol.target.style.height = '90px'
+		    		lol.target.style.fontSize = '40px'
+		    		lol.target.parentNode.style.top = topValue[i]
+		    		lol.target.parentNode.parentNode.style.height = '60px'
 		    		lol.target.attributes['data-actived'].value = 'true'
 			    	for(var a = 0; a < menuChildLength; a++){
 			    		if(lol.target.parentNode.children[a].attributes['data-actived'].value == 'false')  lol.target.parentNode.children[a].style.opacity = '0'
@@ -145,9 +154,10 @@ function init(data){
 		    	}
 		    	else{
 		    		$('#submenu').css('left','-60%')
-		    		lol.target.style.height = '45px'
+		    		lol.target.style.height = '100%'
+		    		lol.target.style.fontSize = propertiesList[i].fontSize
 		    		lol.target.parentNode.style.top = '0px'
-		    		lol.target.parentNode.parentNode.style.height = '300px'
+		    		lol.target.parentNode.parentNode.style.height = '200px'
 		    		lol.target.attributes['data-actived'].value = 'false'
 		    		for(var a = 0; a < menuChildLength; a++){
 			    		lol.target.parentNode.children[a].style.opacity = '1'
@@ -155,7 +165,6 @@ function init(data){
 		    	}
 		    },
 			render: function() {
-		    	var propertiesList = [{'fontSize': '80px', 'padding': '17px 20px'}, {'fontSize': '56px'},{'fontSize': '45px'},{'fontSize': '51px'},{'fontSize': '22px', 'padding': '0px 20px'}]
 				var indents = this.state.data.map(function(item, i){
 					return (
 						<div onClick={this.menuTransform.bind(this,i)} style={$.extend({}, menuItemBox, propertiesList[i] )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>{item.main}</div>
