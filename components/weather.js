@@ -6,7 +6,7 @@ var weatherBox = {
 		'position': 'absolute',
 		'top': 10,
 		'right': 20,
-		'backgroundColor': 'rgba(0, 52, 255, 0.5)',
+		'backgroundColor': 'rgba(123, 123, 123, 0.5)',
 		'borderRadius': 3,
 		'WebkitBoxShadow': '10px 10px 5px -5px rgba(0,0,0,0.2)',
 		'MozBoxShadow': '10px 10px 5px -5px rgba(0,0,0,0.2)',

@@ -87,6 +87,11 @@ init();
 
 function init(data){
 	var SubMenuItem = React.createClass({
+			getInitialState: function(){
+				return {
+					data: menuElementsList
+				}
+			},
 			handleMouseOver: function(lol) {
 			   	lol.target.style.backgroundColor = 'rgba(255, 255, 255, 0.4)'
 			   	lol.target.style['border-bottom'] = '6px solid rgba(255, 255, 0, 1)'
@@ -98,15 +103,31 @@ function init(data){
 			render: function(){
 					console.log(this.state)
 				return(
-					<div id="submenu2" style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >{this.props.name}</div>
+					<div id="submenu2" style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >{this.props.data}</div>
 				)	
+			}
+	})
+	var SubMenuList = React.createClass({
+			getInitialState: function(){
+				return {
+					data: this.props.data
+				}
+			},
+			render: function(){
+				console.log(this.props.data)
+				return(
+					<div id="submenu" style={submenu}>
+						<div style={submenuActive}>
+							{ this.state.data.map(function(element,i){return (<SubMenuItem data={element}></SubMenuItem>)}) }
+						</div>
+					</div>
+				)
 			}
 	})
 	var Menu = React.createClass({
 			getInitialState: function(){
 				return {
-					data: menuElementsList,
-					actual: menuElementsList[0].sub
+					data: menuElementsList
 				}
 			},
 			componentWillMount: function () {
@@ -133,7 +154,6 @@ function init(data){
 			    curretSubMenuList = menuElementsList[i].sub
 
 		    	if(activeStatus == 'false') {
-		    		this.setState({'actual': menuElementsList[i].sub})
 		    		$('#submenu').css('left','130px')
 		    		lol.target.style.padding = '20px 10px'
 		    		lol.target.style.fontSize = '35px'
@@ -165,15 +185,7 @@ function init(data){
 				}.bind(this));
 				return (
 					<div>
-						<div id="submenu" style={submenu}>
-						<div style={submenuActive}>
-							{ this.state.actual.map(function(element,i){
-								return (
-									<SubMenuItem name={element} key={element}></SubMenuItem>
-									)
-							})}
-						</div>
-					</div>
+						<SubMenuList data={curretSubMenuList}></SubMenuList>
 						<div id="menu" style={menuMainBox}>
 							<div id="itemGroupBox" style={itemGroupBox}>
 								{indents}
