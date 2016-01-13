@@ -64,6 +64,8 @@ var submenubutton = {
 
 'use strict';
 
+document.body.style.zoom="75%"
+
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var menuElementsList = [
