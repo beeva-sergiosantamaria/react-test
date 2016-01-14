@@ -44,7 +44,7 @@ function initVideo(){
 							<div style={logoStl}><img src="images/logo.png"></img></div>
 					        <div id="videofilter" style={filter}></div>
 					        <video id="videoElement" autoPlay loop style={fillWidth}>
-					            <source src="video/TheCrosswalk.mp4" type="video/mp4" />
+					            <source src="video/cross.mp4" type="video/mp4" />
 					        </video>
 					    </div>
 					</div>
