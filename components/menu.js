@@ -60,6 +60,28 @@ var submenubutton = {
   	'cursor': 'pointer',
 	'transition': 'all 0.2s ease-in-out'
 }
+var subMenuControlButtons = {
+	'height': '60px',
+	'color': 'yellow',
+	'float': 'right',
+  	'padding': '0px 0px',
+	'textTransform': 'uppercase',
+  	'borderLeft': '6px solid rgba(255, 255, 0, 1)',
+  	'fontWeight': 'bolder',
+  	'fontSize': '48px',
+  	'textAlign': 'center',
+  	'cursor': 'pointer',
+	'transition': 'all 0.2s ease-in-out'
+}
+var controlArrowButtons = {
+	'width': '40px', 
+	'height': '30px',
+	'margin':'0px 5px'
+}
+var arrowStyle = {
+	'height': '25px',
+	'width': '40px'
+}
 
 /////////////-------------------------------------------------------------------------
 /////////////---------------------COMPONENT ------------------------------------------
@@ -72,8 +94,8 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var menuElementsList = [
 			{'main': 'main','sub':['components','features','some','thing']},
-			{'main': 'notices','sub':['local','national','international']},
-			{'main': 'weather','sub':['national','global','max','min']},
+			{'main': 'notices','sub':['local','national','international', 'sports', 'society', 'economy']},
+			{'main': 'weather','sub':['Local','national','global','rain','disasters']},
 			{'main': 'about','sub':['me','enterprise','corp.','place']},
 			{'main': 'contact','sub':['mail','suscribe','newsletter','phone']}
 ]
@@ -96,7 +118,6 @@ function init(data){
 			   	lol.target.style['border-bottom'] = '6px solid rgba(255, 255, 0, 0)'
 			},
 			render: function(){
-					console.log(this.state)
 				return(
 					<div id="submenu2" style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >{this.props.name}</div>
 				)	
@@ -123,6 +144,12 @@ function init(data){
 			   		lol.target.style['border-left'] = '6px solid rgba(255, 255, 0, 0)'
 			   		lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0)'
 			   }
+			},
+			handleMouseOverArrow: function(lol) {
+			   		lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0.4)'
+			},
+			handleMouseOutArrow: function(lol) {
+			   		lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0)'
 			},
 		    handleRemove: function(i) {
 		    },
@@ -166,14 +193,18 @@ function init(data){
 				return (
 					<div>
 						<div id="submenu" style={submenu}>
-						<div style={submenuActive}>
-							{ this.state.actual.map(function(element,i){
-								return (
-									<SubMenuItem name={element} key={element}></SubMenuItem>
-									)
-							})}
+							<div style={submenuActive}>
+								{ this.state.actual.map(function(element,i){
+									return (
+										<SubMenuItem name={element} key={element}></SubMenuItem>
+										)
+								})}
+								<div style={subMenuControlButtons}>
+									<div style={controlArrowButtons} onMouseOver = {this.handleMouseOverArrow.bind(this)} onMouseOut={this.handleMouseOutArrow.bind(this)} ><img style = {arrowStyle} src="images/arrowUp.png"></img></div>
+									<div style={controlArrowButtons} onMouseOver = {this.handleMouseOverArrow.bind(this)} onMouseOut={this.handleMouseOutArrow.bind(this)} ><img style = {arrowStyle} src="images/arrowDown.png"></img></div>
+								</div>
+							</div>
 						</div>
-					</div>
 						<div id="menu" style={menuMainBox}>
 							<div id="itemGroupBox" style={itemGroupBox}>
 								{indents}
