@@ -10,6 +10,7 @@ var menuMainBox = {
 	'borderRadius': '0px 0px 300px 0px',
 	'overflow': 'hidden',
 	'borderRight': 'solid 6px rgba(255, 255, 0, 1)',
+	'zIndex': '999',
 	'transition': 'all 0.5s ease-in-out'
 }
 var itemGroupBox = {
@@ -36,6 +37,7 @@ var submenu = {
 	'position': 'absolute',
 	'top': '0px',
 	'left': '-60%',
+	'zIndex': '999',
 	'backgroundColor': 'rgba(90, 90, 90, 1)',
 	'borderRadius': '0px 0px 3px 3px',
 	'overflow': 'hidden',
@@ -119,7 +121,7 @@ function init(data){
 			},
 			render: function(){
 				return(
-					<div id="submenu2" style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} >{this.props.name}</div>
+					<div id="submenu2" style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} key={this.props.name}>{this.props.name}</div>
 				)	
 			}
 	})
@@ -187,7 +189,7 @@ function init(data){
 			render: function() {
 				var indents = this.state.data.map(function(item, i){
 					return (
-						<div onClick={this.menuTransform.bind(this,i)} style={$.extend({}, menuItemBox, propertiesList[i] )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>{item.main}</div>
+						<div key={item.main} onClick={this.menuTransform.bind(this,i)} style={$.extend({}, menuItemBox, propertiesList[i] )} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} data-actived='false'>{item.main}</div>
 					)
 				}.bind(this));
 				return (
