@@ -93,15 +93,15 @@ document.body.style.zoom="75%"
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var menuElementsList = [
-			{'main': 'main','sub':['components','features','some','thing']},
-			{'main': 'notices','sub':['local','national','international', 'sports', 'society', 'economy']},
-			{'main': 'weather','sub':['Local','national','global','rain','disasters']},
-			{'main': 'about','sub':['me','enterprise','corp.','place']},
-			{'main': 'contact','sub':['mail','suscribe','newsletter','phone']}
+			{'main': 'main','sub':['cover','Notices','features' ]},
+			{'main': 'about','sub':['mision','investigacion','como trabajamos', 'equipo']},
+			{'main': 'portfolio','sub':['todos','eventos','pilotos','prototipos&experimentos','talleres']},
+			{'main': 'posts','sub':['posts','blog']},
+			{'main': 'contact','sub':['suscribe','newsletter','rss']}
 ]
 
 
-var propertiesList = [{'fontSize': '67px', 'padding': '0px 10px'}, {'fontSize': '35px', 'padding': '0px 20px'},{'fontSize': '26px', 'padding': '0px 20px'},{'fontSize': '26px', 'padding': '0px 20px'},{'fontSize': '15px', 'padding': '0px 10px'}]
+var propertiesList = [{'fontSize': '67px', 'padding': '0px 10px'}, {'fontSize': '45px', 'padding': '0px 20px'},{'fontSize': '22px', 'padding': '0px 20px'},{'fontSize': '26px', 'padding': '0px 20px'},{'fontSize': '15px', 'padding': '0px 10px'}]
 
 var curretSubMenuList = menuElementsList[0].sub
 
@@ -154,7 +154,7 @@ function init(data){
 		    handleRemove: function(i) {
 		    },
 		    menuTransform: function(i,lol) {
-		    	var topValue = ['0px', '-72px', '-110px', '-137px', '-165px']
+		    	var topValue = ['0px', '-72px', '-120px', '-145px', '-173px']
 		    	var activeStatus = lol.target.attributes['data-actived'].value;	
 			    var menuChildLength = lol.target.parentNode.children.length;
 			    curretSubMenuList = menuElementsList[i].sub
@@ -163,7 +163,7 @@ function init(data){
 		    		this.setState({'actual': menuElementsList[i].sub})
 		    		$('#submenu').css('left','130px')
 		    		lol.target.style.padding = '20px 10px'
-		    		lol.target.style.fontSize = '35px'
+		    		lol.target.style.fontSize = '31px'
 		    		lol.target.parentNode.style.top = topValue[i]
 		    		lol.target.parentNode.parentNode.style.height = '60px'
 		    		lol.target.attributes['data-actived'].value = 'true'
