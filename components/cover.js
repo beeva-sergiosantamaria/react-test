@@ -72,10 +72,10 @@ $(document).ready(function() {
 	var text = document.getElementById("textForVideo");
 
 	setInterval(function(){
-		if(i>=sources.length) i=0;
 		i = i + 1;
+		if(i>=sources.length) i=0;
 		text.innerHTML = sources[i]
-	}, 14000);
+	}, 14500);
 });
 
 /////////////-----------------------------------------------------------------------
