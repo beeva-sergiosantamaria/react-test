@@ -95,9 +95,9 @@ document.body.style.zoom="75%"
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var menuElementsList = [
-			{'main': 'main','sub':['cover','Notices','features' ]},
+			{'main': 'main','sub':['cover','notices','features' ]},
 			{'main': 'about','sub':['mision','investigacion','como trabajamos', 'equipo']},
-			{'main': 'portfolio','sub':['todos','eventos','pilotos','prototipos&experimentos','talleres']},
+			{'main': 'portfolio','sub':['todos','eventos','pilotos','prototipos & experimentos','talleres']},
 			{'main': 'posts','sub':['posts','blog']},
 			{'main': 'contact','sub':['suscribe','newsletter','rss']}
 ]
@@ -106,6 +106,8 @@ var menuElementsList = [
 var propertiesList = [{'fontSize': '67px', 'padding': '0px 10px'}, {'fontSize': '45px', 'padding': '0px 20px'},{'fontSize': '22px', 'padding': '0px 20px'},{'fontSize': '26px', 'padding': '0px 20px'},{'fontSize': '15px', 'padding': '0px 10px'}]
 
 var curretSubMenuList = menuElementsList[0].sub
+
+var menuActive = 0
 
 init();
 
@@ -119,9 +121,14 @@ function init(data){
 			    lol.target.style.backgroundColor = 'rgba(0, 0, 0, 0)'
 			   	lol.target.style['border-bottom'] = '6px solid rgba(255, 255, 0, 0)'
 			},
+			changeView: function(lol) {
+				$('#dinamyComponentGroup').children().css('display', 'none')
+				$('#'+lol.target.innerHTML).css('display', 'block')
+				console.log(lol.target.innerHTML)	
+			},
 			render: function(){
 				return(
-					<div id="submenu2" style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} key={this.props.name}>{this.props.name}</div>
+					<div id="submenu2" onClick={this.changeView.bind(this)} style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} key={this.props.name}>{this.props.name}</div>
 				)	
 			}
 	})
@@ -160,6 +167,9 @@ function init(data){
 		    	var activeStatus = lol.target.attributes['data-actived'].value;	
 			    var menuChildLength = lol.target.parentNode.children.length;
 			    curretSubMenuList = menuElementsList[i].sub
+			    if( i == 'up' ) menuActive = menuActive + 1
+			    else if( i == 'down' )	menuActive = menuActive - 1
+			    else menuActive = i	
 
 		    	if(activeStatus == 'false') {
 		    		this.setState({'actual': menuElementsList[i].sub})

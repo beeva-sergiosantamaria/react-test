@@ -28,6 +28,14 @@ var logoStl = {
 	'bottom': '0',
 	'right': '0'
 }
+var textStl = {
+	'position': 'absolute',
+	'top': '20',
+	'left': '20',
+	'fontSize': '100px',
+	'fontWeight': 'bold',
+	'color': 'yellow'
+}
 /////////////-------------------------------------------------------------------------
 /////////////---------------------COMPONENT-------------------------------------------
 
@@ -41,17 +49,18 @@ function initVideo(){
 				return (
 					<div id="videoBox" style={homepageHeroModule}>
 					    <div id="videoContainer" style={videoContainer}>
+					    	<div id="textForVideo" style={textStl}>Inspiration</div>
 							<div style={logoStl}><img src="images/logo.png"></img></div>
 					        <div id="videofilter" style={filter}></div>
 					        <video id="videoElement" autoPlay loop style={fillWidth}>
-					            <source src="video/cross.mp4" type="video/mp4" />
+					            <source src="video/video.mp4" type="video/mp4" />
 					        </video>
 					    </div>
 					</div>
 				)
 			}
 		});
-	React.render(<VideoCover/>, document.getElementById('video'))
+	React.render(<VideoCover/>, document.getElementById('cover'))
 }
 	
 /////////////------------------------------------------------------------------------
@@ -59,28 +68,14 @@ function initVideo(){
 
 $(document).ready(function() {
    	var i = 0;
-	var sources = ['Under.mp4', 'Ideas.mp4', 'push.mp4', 'cross.mp4'];
-	var vid = document.getElementById("videoElement");
+	var sources = ['Inspiration', 'Thinking about', 'creating', 'Making real'];
+	var text = document.getElementById("textForVideo");
 
 	setInterval(function(){
 		if(i>=sources.length) i=0;
-		console.log($('#videoElement').bind('ended'))
-		$('#videoElement')[0].src = 'video/'+sources[i++ % sources.length];
-		$('#videoElement').load();
-	}, 12000);
+		i = i + 1;
+		text.innerHTML = sources[i]
+	}, 14000);
 });
-
-/*$(document).ready(function() {
-    //place code inside jQuery ready event handler 
-    //to ensure videoElement is available
-    var i = 0;
-    var sources = ['1.mp4', '2.mp4'];
-    $('#videoElement').bind('ended', function() {
-        //'this' is the DOM video element
-        this.src = sources[i++ % sources.length];
-        this.load();
-        this.play();
-    });
-});*/
 
 /////////////-----------------------------------------------------------------------
