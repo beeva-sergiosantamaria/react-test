@@ -49,7 +49,7 @@ function initVideo(){
 				return (
 					<div id="videoBox" style={homepageHeroModule}>
 					    <div id="videoContainer" style={videoContainer}>
-					    	<div id="textForVideo" style={textStl}>Inspiration</div>
+					    	<div id="textForVideo" style={textStl}>Getting inspiration</div>
 							<div style={logoStl}><img src="images/logo.png"></img></div>
 					        <div id="videofilter" style={filter}></div>
 					        <video id="videoElement" autoPlay loop style={fillWidth}>
@@ -68,14 +68,14 @@ function initVideo(){
 
 $(document).ready(function() {
    	var i = 0;
-	var sources = ['Inspiration', 'Thinking about', 'creating', 'Making real'];
+	var sources = ['Getting inspiration', 'Thinking about', 'creating', 'Making real'];
 	var text = document.getElementById("textForVideo");
 
 	setInterval(function(){
 		i = i + 1;
 		if(i>=sources.length) i=0;
 		text.innerHTML = sources[i]
-	}, 14500);
+	}, 12000);
 });
 
 /////////////-----------------------------------------------------------------------

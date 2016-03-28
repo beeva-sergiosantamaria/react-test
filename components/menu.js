@@ -11,13 +11,13 @@ var menuMainBox = {
 	'overflow': 'hidden',
 	'borderRight': 'solid 6px rgba(255, 255, 0, 1)',
 	'zIndex': '999',
-	'transition': 'all 0.5s ease-in-out'
+	'transition': 'all 0.2s ease-in-out'
 }
 var itemGroupBox = {
 	'position': 'absolute',
 	'top': '0px',
 	'left': '0px',
-	'transition': 'all 0.5s ease-in-out'
+	'transition': 'all 0.2s ease-in-out'
 }
 var menuItemBox = {
 	'width': '120%',
@@ -29,7 +29,7 @@ var menuItemBox = {
   	'opacity': '1',
   	'height': '100%',
   	'borderLeft': '6px solid rgba(255, 255, 0, 0)',
-	'transition': 'all 0.4s ease-in-out'
+	'transition': 'all 0.2s ease-in-out'
 }
 var submenu = {
 	'height': '60px',
@@ -42,7 +42,7 @@ var submenu = {
 	'borderRadius': '0px 0px 3px 3px',
 	'overflow': 'hidden',
 	'paddingLeft': '100px',
-	'transition': 'all 0.5s ease-in-out 0.1s'
+	'transition': 'all 0.2s ease-in-out 0.1s'
 }
 var submenuActive = {
 	'height': '60px',
