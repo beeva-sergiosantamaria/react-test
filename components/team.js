@@ -19,12 +19,10 @@ var teamItemBox = {
   	'margin': '2%',
   	'display': 'inline-block',
   	'float': 'left',
-	'transition': 'all 0.2s ease-in-out',
 	'overflow': 'hidden'
 }
 var teamPhoto = {
-	'height': '85%',
-	'transition': 'all 0.2s ease-in-out 0.1s'
+	'height': '85%'
 }
 var memberInfo = {
 	'backgroundColor': 'rgba(255, 243, 18, 0.8)',
@@ -32,7 +30,7 @@ var memberInfo = {
 	'height': '100%',
 	'width': '100%',
 	'top': '-100%',
-	'transition': 'all 0.2s ease-in-out 0.1s'
+	'transition': 'top 0.3s ease-out'
 }
 var memberInfoText = {
 	'color': '#444444',
@@ -77,7 +75,7 @@ var teamMembers = [
 			{'name': 'Marian Moldovan','ocup':'Future maker', 'desc': 'Agente del caos. Hacker de IoT y apasionado por la Computación Ubicua.', 'photo':'Claudiu'},
 			{'name': 'Sergio Santamaria','ocup':'Visual maker', 'desc': 'Visualizador y desarrollador agreste que busca lo que no se haya hecho antes y que a un gráfico le sobren las palabras, no necesariamente por ese orden.', 'photo':'Santamaria'},
 			{'name': 'Jesús Martín','ocup':'UX researcher', 'desc': 'Interesado en las personas y en como se enfrentan a todo tipo de interfaz y obsesionado con hacer toda interacción más fácil.', 'photo':'Martin'},
-			{'name': 'Carlos González','ocup':'Researcher', 'desc': 'Interesado en la ciencia de datos, el desarrollo software y la domótica. En aprendizaje constante para mejorar día a día. Adicto a los libros y a conocer mundo.', 'photo':'Gonzalez'}
+			{'name': 'Carlos González','ocup':'Researcher', 'desc': 'Interesado en la ciencia de datos, el desarrollo de software y la domótica. En aprendizaje constante para mejorar día a día. Adicto a los libros y a conocer mundo.', 'photo':'Gonzalez'}
 ]
 initTeam();
 

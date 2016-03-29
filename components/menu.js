@@ -95,7 +95,7 @@ document.body.style.zoom="75%"
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var menuElementsList = [
-			{'main': 'main','sub':['cover','notices','features' ]},
+			{'main': 'main','sub':['cover','notices','calendar' ]},
 			{'main': 'about','sub':['mision','investigacion','como trabajamos', 'equipo']},
 			{'main': 'portfolio','sub':['todos','eventos','pilotos','prototipos & experimentos','talleres']},
 			{'main': 'posts','sub':['posts','blog']},

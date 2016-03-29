@@ -25,14 +25,15 @@ var fillWidth = {
 }
 var logoStl = {
 	'position': 'absolute',
-	'bottom': '0',
-	'right': '0'
+	'bottom': '5%',
+	'right': '0%',
+	'width': '20%'
 }
 var textStl = {
 	'position': 'absolute',
 	'top': '20',
-	'left': '20',
-	'fontSize': '100px',
+	'right': '20',
+	'fontSize': '50px',
 	'fontWeight': 'bold',
 	'color': 'yellow'
 }
@@ -50,7 +51,7 @@ function initVideo(){
 					<div id="videoBox" style={homepageHeroModule}>
 					    <div id="videoContainer" style={videoContainer}>
 					    	<div id="textForVideo" style={textStl}>Getting inspiration</div>
-							<div style={logoStl}><img src="images/logo.png"></img></div>
+							<img style={logoStl} src="images/logo.png"></img>
 					        <div id="videofilter" style={filter}></div>
 					        <video id="videoElement" autoPlay loop style={fillWidth}>
 					            <source src="video/video.mp4" type="video/mp4" />
