@@ -140,10 +140,10 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 $.get(weatherAPI, function (data) {	
 		console.log(data)
-		init(data)
+		initArticles(data)
 	});
 
-function init(data){
+function initArticles(data){
 	var Net = React.createClass({
 			getInitialState: function(){
 				return {
@@ -240,6 +240,4 @@ function init(data){
 	
 /////////////------------------------------------------------------------------------
 /////////////---------------------FUNCTIONS------------------------------------------
-
-
-/////////////---------------------------------------------------------------
+/////////////------------------------------------------------------------------------

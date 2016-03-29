@@ -109,9 +109,9 @@ var curretSubMenuList = menuElementsList[0].sub
 
 var menuActive = 0
 
-init();
+initMenu();
 
-function init(data){
+function initMenu(data){
 	var SubMenuItem = React.createClass({
 			handleMouseOver: function(lol) {
 			   	lol.target.style.backgroundColor = 'rgba(255, 255, 255, 0.4)'

@@ -10,8 +10,8 @@ var teamMainBox = {
 }	
 var teamItemBox = {
 	'position': 'relative',
-	'height': '45%',
-	'textTransform': 'uppercase',
+	'height': '50%',
+	'width': '20%',
 	'backgroundColor': 'rgba(60, 60, 60, 0.3)',
   	'fontWeight': 'bolder',
   	'cursor': 'pointer',
@@ -23,7 +23,7 @@ var teamItemBox = {
 	'overflow': 'hidden'
 }
 var teamPhoto = {
-	'height': '100%',
+	'height': '85%',
 	'transition': 'all 0.2s ease-in-out 0.1s'
 }
 var memberInfo = {
@@ -34,12 +34,26 @@ var memberInfo = {
 	'top': '-100%',
 	'transition': 'all 0.2s ease-in-out 0.1s'
 }
+var memberInfoText = {
+	'color': '#444444',
+	'width': '80%',
+	'height': '50%',
+	'marginTop': '20%',
+	'marginLeft': '10%',
+	'fontSize': '20px'
+}
 var teamName = {
 	'fontFamily': "'Work Sans', sans-serif",
+	'marginTop': '2%',
+	'marginLeft': '4%',
+	'textTransform': 'uppercase',
 	'fontSize': '20px'
 }
 var teamOcup = {
 	'fontFamily': "'Work Sans', sans-serif",
+	'marginBottom': '1%',
+	'marginRight': '4%',
+	'textTransform': 'uppercase',
 	'fontSize': '16px',
 	'color': 'yellow',
 	'textAlign': 'right'
@@ -65,9 +79,9 @@ var teamMembers = [
 			{'name': 'Jesús Martín','ocup':'UX researcher', 'desc': 'Interesado en las personas y en como se enfrentan a todo tipo de interfaz y obsesionado con hacer toda interacción más fácil.', 'photo':'Martin'},
 			{'name': 'Carlos González','ocup':'Researcher', 'desc': 'Interesado en la ciencia de datos, el desarrollo software y la domótica. En aprendizaje constante para mejorar día a día. Adicto a los libros y a conocer mundo.', 'photo':'Gonzalez'}
 ]
-init();
+initTeam();
 
-function init(data){
+function initTeam(data){
 	console.log(data);
 	var Team = React.createClass({
 			getInitialState: function(){
@@ -78,8 +92,10 @@ function init(data){
 			componentWillMount: function () {
 			},
 			handleMouseOver: function(lol) {
+				lol.currentTarget.children[0].style.top = '0';
 			},
 			handleMouseOut: function(lol) {
+				lol.currentTarget.children[0].style.top = '-100%';
 			},
 			handleMouseOverArrow: function(lol) {
 			},
@@ -92,7 +108,9 @@ function init(data){
 					var photoURL = 'images/photos/'+item.photo+'.png'
 					return (
 						<div key={item.name} style={teamItemBox} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
-							<div style={memberInfo}></div>
+							<div style={memberInfo}>
+								<div style={memberInfoText}>{item.desc}</div>
+							</div>
 							<img style={teamPhoto} src={photoURL}/>
 							<div style={teamName}>{item.name}</div>
 							<div style={teamOcup}>{item.ocup}</div>
