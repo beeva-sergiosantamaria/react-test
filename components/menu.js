@@ -95,7 +95,7 @@ document.body.style.zoom="75%"
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var menuElementsList = [
-			{'main': 'main','sub':['cover','news','calendar' ]},
+			{'main': 'main','sub':['home','news','calendar' ]},
 			{'main': 'about','sub':['mision','investigacion','como trabajamos', 'equipo']},
 			{'main': 'portfolio','sub':['todos','eventos','pilotos','prototipos & experimentos','talleres']},
 			{'main': 'posts','sub':['posts','blog']},
@@ -212,8 +212,6 @@ function initMenu(data){
 										)
 								})}
 								<div style={subMenuControlButtons}>
-									<div style={controlArrowButtons} onMouseOver = {this.handleMouseOverArrow.bind(this)} onMouseOut={this.handleMouseOutArrow.bind(this)} ><img style = {arrowStyle} src="images/arrowUp.png"></img></div>
-									<div style={controlArrowButtons} onMouseOver = {this.handleMouseOverArrow.bind(this)} onMouseOut={this.handleMouseOutArrow.bind(this)} ><img style = {arrowStyle} src="images/arrowDown.png"></img></div>
 								</div>
 							</div>
 						</div>
@@ -232,5 +230,7 @@ function initMenu(data){
 /////////////------------------------------------------------------------------------
 /////////////---------------------FUNCTIONS------------------------------------------
 
+									//<div style={controlArrowButtons} onMouseOver = {this.handleMouseOverArrow.bind(this)} onMouseOut={this.handleMouseOutArrow.bind(this)} ><img style = {arrowStyle} src="images/arrowUp.png"></img></div>
+									//<div style={controlArrowButtons} onMouseOver = {this.handleMouseOverArrow.bind(this)} onMouseOut={this.handleMouseOutArrow.bind(this)} ><img style = {arrowStyle} src="images/arrowDown.png"></img></div>
 
 /////////////-----------------------------------------------------------------------

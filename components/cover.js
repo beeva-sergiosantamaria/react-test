@@ -61,7 +61,7 @@ function initVideo(){
 				)
 			}
 		});
-	React.render(<VideoCover/>, document.getElementById('cover'))
+	React.render(<VideoCover/>, document.getElementById('home'))
 }
 	
 /////////////------------------------------------------------------------------------
