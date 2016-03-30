@@ -235,7 +235,7 @@ function initArticles(data){
 				)
 			}
 		});
-	React.render(<Net elements="5"/>, document.getElementById('notices'))
+	React.render(<Net elements="5"/>, document.getElementById('news'))
 }
 	
 /////////////------------------------------------------------------------------------
