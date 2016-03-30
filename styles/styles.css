@@ -44,6 +44,49 @@ html,body {
     scrollbar-track-color: #7D7E94;
     scrollbar-arrow-color: #C1C1D1; 
 }
+#cover{
+  height: 80%; 
+  width: 80%; 
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  left: 0; 
+  right: 15%; 
+  margin: auto;
+  -webkit-transition: left 200ms ease-out;
+  -moz-transition: left 200ms ease-out;
+  -o-transition: left 200ms ease-out;
+  transition: left 200ms ease-out;
+}
+#news{
+  height: 80%; 
+  width: 75%; 
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  left: -170%; 
+  right: 15%; 
+  margin: auto; 
+  overflow-y: auto;
+  -webkit-transition: left 200ms ease-out;
+  -moz-transition: left 200ms ease-out;
+  -o-transition: left 200ms ease-out;
+  transition: left 200ms ease-out;
+}
+#equipo{
+  height: 90%; 
+  width: 75%; 
+  position: absolute; 
+  top: 10%; 
+  bottom: 0; 
+  left: -170%; 
+  right: 15%; 
+  margin: auto;
+  -webkit-transition: left 200ms ease-out;
+  -moz-transition: left 200ms ease-out;
+  -o-transition: left 200ms ease-out;
+  transition: left 200ms ease-out;
+}
 .example-enter {
   opacity: 0.01;
 }

@@ -122,8 +122,8 @@ function initMenu(data){
 			   	lol.target.style['border-bottom'] = '6px solid rgba(255, 255, 0, 0)'
 			},
 			changeView: function(lol) {
-				$('#dinamyComponentGroup').children().css('display', 'none')
-				$('#'+lol.target.innerHTML).css('display', 'block')
+				$('#dinamyComponentGroup').children().css('left', '-170%')
+				$('#'+lol.target.innerHTML).css('left', '0')
 				console.log(lol.target.innerHTML)	
 			},
 			render: function(){
