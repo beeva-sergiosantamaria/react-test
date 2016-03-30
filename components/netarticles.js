@@ -27,7 +27,7 @@ var noticeHeather = {
 			'fontWeight': 'bold',
 			'padding': '13px',
 			'height': '45px',
-			'fontSize': '14px'
+			'fontSize': '17px'
 }
 var titularText = {
 			'width': '80%',

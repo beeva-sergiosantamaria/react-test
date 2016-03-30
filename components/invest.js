@@ -36,7 +36,7 @@ var investBoxTextStyle = {
 	'width': '25%',
 	'height': '20%',
 	'padding':'3%',
-	'backgroundColor': 'rgba(0, 0, 0, 0.15)',
+	'backgroundColor': 'rgba(0, 0, 0, 0.30)',
 	'marginRight': '2%',
 	'float': 'left'
 }
@@ -54,6 +54,7 @@ var investTextTitleStyle = {
 	'color': '#ffffff',
 	'width': '100%',
 	'float': 'left',
+	'textAlign': 'center',
 	'fontSize': '25px',
 	'marginBottom': '5%'
 }
@@ -62,8 +63,9 @@ var investTextStyle = {
 	'width': '100%',
 	'float': 'left',
 	'fontSize': '20px',
-	'color': '#353535',
-	'textAlign': 'justify',
+	'fontWeight': 'bold',
+	'color': '#ffffff',
+	'textAlign': 'center',
 	'transition': 'top 0.3s ease-out'
 }
 
