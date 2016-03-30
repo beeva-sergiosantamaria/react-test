@@ -36,7 +36,7 @@ var investBoxTextStyle = {
 	'width': '25%',
 	'height': '20%',
 	'padding':'3%',
-	'backgroundColor': 'rgba(255, 243, 18, 0.3)',
+	'backgroundColor': 'rgba(0, 0, 0, 0.15)',
 	'marginRight': '2%',
 	'float': 'left'
 }

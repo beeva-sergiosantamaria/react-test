@@ -95,11 +95,11 @@ document.body.style.zoom="75%"
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var menuElementsList = [
-			{'main': 'main','sub':['home','news','calendar' ]},
-			{'main': 'about','sub':['mision','investigacion','como trabajamos', 'equipo']},
-			{'main': 'portfolio','sub':['todos','eventos','pilotos','prototipos & experimentos','talleres']},
-			{'main': 'posts','sub':['posts','blog']},
-			{'main': 'contact','sub':['suscribe','newsletter','rss']}
+			{'main': 'main','sub':[{'name':'home','value':'home'},{'name':'news','value':'news'},{'name':'calendar','value':'calendar'} ]},
+			{'main': 'about','sub':[{'name':'misión','value':'mision'},{'name':'investigación','value':'investigacion'},{'name':'cómo trabajamos','value':'metodologia'}, {'name':'equipo','value':'equipo'}]},
+			{'main': 'portfolio','sub':[{'name':'todos','value':'todos'},{'name':'eventos','value':'eventos'},{'name':'pilotos','value':'pilotos'},{'name':'prototipos & experimentos','value':'prototipos'},{'name':'talleres','value':'talleres'}]},
+			{'main': 'posts','sub':[{'name':'posts','value':'posts'},{'name':'blog','value':'blog'}]},
+			{'main': 'contact','sub':[{'name':'suscribe','value':'suscribe'},{'name':'newsletter','value':'newsletter'},{'name':'rss','value':'rss'}]}
 ]
 
 
@@ -123,12 +123,13 @@ function initMenu(data){
 			},
 			changeView: function(lol) {
 				$('#dinamyComponentGroup').children().css('left', '-170%')
-				$('#'+lol.target.innerHTML).css('left', '0')
-				console.log(lol.target.innerHTML)	
+				$('.'+lol.target.attributes.value.value).css('left', '0')
+				console.log(lol.target.attributes.value.value)	
 			},
 			render: function(){
+				console.log(this.props);
 				return(
-					<div id="submenu2" onClick={this.changeView.bind(this)} style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} key={this.props.name}>{this.props.name}</div>
+					<div id={"subMenu2"} onClick={this.changeView.bind(this)} style={submenubutton} onMouseOver = {this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)} value={this.props.value} key={this.props.value}>{this.props.name}</div>
 				)	
 			}
 	})
@@ -208,7 +209,7 @@ function initMenu(data){
 							<div style={submenuActive}>
 								{ this.state.actual.map(function(element,i){
 									return (
-										<SubMenuItem name={element} key={element}></SubMenuItem>
+										<SubMenuItem name={element.name} key={element.value} value={element.value}></SubMenuItem>
 										)
 								})}
 								<div style={subMenuControlButtons}>
