@@ -40,6 +40,9 @@ var counterPlus = {
 	'width': '10%%',
 	'float': 'right'
 }
+var logoCounter = {
+	'width': '100%'
+}
 
 /////////////-------------------------------------------------------------------------
 /////////////---------------------COMPONENT ------------------------------------------
@@ -138,7 +141,8 @@ function initcounter(data){
 								<div style={counterNumber}>{item.startValue4}</div>
 								<div style={counterPlus}><i className="fa fa-plus"></i></div>
 								<div style={counterText}>{item.data4}</div>
-							</div>		
+							</div>
+							<img style={logoCounter} src="images/iconoCarga.png"></img>		
 						</div>
 					)
 			}
