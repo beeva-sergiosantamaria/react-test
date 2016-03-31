@@ -60,7 +60,7 @@ var noticeImageBox = {
 var noticeText = {
 			'width': '53%',
 			'float': 'left',
-			'backgroundColor': 'rgba(255, 255, 255, 0.75)',
+			'backgroundColor': 'rgba(255, 255, 255, 0.85)',
 			'height': '155px',
 			'padding': '10px 20px 0px 20px'
 }

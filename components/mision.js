@@ -58,10 +58,16 @@ function initMision(data){
 	var Mision = React.createClass({
 			getInitialState: function(){
 				return {
-					data: misionText
+					title: misionText.title,
+					text1: misionText.text1,
+					text2: misionText.text2,
+					photo: misionText.photo
 				}
 			},
 			componentWillMount: function () {
+			},
+			componentDidMount: function() {
+			 
 			},
 			handleMouseOver: function(lol) {
 			},
@@ -74,7 +80,7 @@ function initMision(data){
 		    handleRemove: function(i) {
 		    },
 			render: function() {
-				var item = this.state.data;
+				var item = this.state;
 				var photoURL = 'images/'+item.photo+'.png'
 				return (
 						<div id="team" style={misionMainBox}>

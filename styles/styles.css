@@ -129,6 +129,13 @@ html,body {
   -o-transition: left 200ms ease-out;
   transition: left 200ms ease-out;
 }
+.counter{
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  right: 0%;
+  top: 35%;
+}
 .example-enter {
   opacity: 0.01;
 }
