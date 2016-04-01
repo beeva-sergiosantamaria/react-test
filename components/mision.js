@@ -54,7 +54,6 @@ var misionText = {
 initMision();
 
 function initMision(data){
-	console.log(data);
 	var Mision = React.createClass({
 			getInitialState: function(){
 				return {

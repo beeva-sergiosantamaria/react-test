@@ -80,7 +80,6 @@ var teamMembers = [
 initTeam();
 
 function initTeam(data){
-	console.log(data);
 	var Team = React.createClass({
 			getInitialState: function(){
 				return {

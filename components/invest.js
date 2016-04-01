@@ -92,7 +92,6 @@ var investText = {
 initInvest();
 
 function initInvest(data){
-	console.log(data);
 	var Invest = React.createClass({
 			getInitialState: function(){
 				return {

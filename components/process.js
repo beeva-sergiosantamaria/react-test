@@ -108,7 +108,6 @@ var metoText = {
 initMeto();
 
 function initMeto(data){
-	console.log(data);
 	var Meto = React.createClass({
 			getInitialState: function(){
 				return {

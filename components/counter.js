@@ -62,7 +62,6 @@ var counterData = [
 initcounter();
 
 function initcounter(data){
-	console.log(data);
 	var Counter = React.createClass({
 			getInitialState: function(){
 				return {
