@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-/////////////---------------------STYLES ---------------------------------------------
-
-var menuMainBox = {
-	'height': '300px',
-	'width': '300px',
-=======
 'use strict';
 
 /////////////---------------------STYLES ---------------------------------------------
@@ -12,44 +5,20 @@ var menuMainBox = {
 var menuMainBox = {
 	'height': '200px',
 	'width': '200px',
->>>>>>> gh-pages
 	'position': 'absolute',
 	'top': '0px',
 	'left': '0px',
 	'backgroundColor': 'rgba(90, 90, 90, 1)',
 	'borderRadius': '0px 0px 300px 0px',
 	'overflow': 'hidden',
-<<<<<<< HEAD
-	'transition': 'all 0.5s ease-in-out'
-}
-=======
 	'borderRight': 'solid 6px rgba(255, 255, 0, 1)',
 	'zIndex': '999',
 	'transition': 'all 0.2s ease-in-out'
 };
->>>>>>> gh-pages
 var itemGroupBox = {
 	'position': 'absolute',
 	'top': '0px',
 	'left': '0px',
-<<<<<<< HEAD
-	'transition': 'all 0.5s ease-in-out'
-}
-var menuItemBox = {
-	'width': '120%',
-	'height': '45px',
-	'color': 'yellow',
-	'textTransform': 'uppercase',
-  	'fontWeight': 'bolder',
-  	'padding': '6px 20px',
-  	'cursor': 'pointer',
-  	'lineHeight': '40px',
-  	'opacity': '1',
-	'transition': 'all 0.2s ease-in-out'
-}
-var submenu = {
-	'height': '80px',
-=======
 	'transition': 'all 0.2s ease-in-out'
 };
 var menuItemBox = {
@@ -75,23 +44,6 @@ var submenu = {
 	'borderRadius': '0px 0px 3px 3px',
 	'overflow': 'hidden',
 	'paddingLeft': '100px',
-	'transition': 'all 0.5s ease-in-out 0.1s'
-}
-var submenuActive = {
-	'height': '80px',
-	'width': '100%'
-}
-var submenubutton = {
-	'height': '80px',
-	'color': 'yellow',
-	'float': 'left',
-  	'padding': '0px 20px',
-	'textTransform': 'uppercase',
-  	'fontWeight': 'bolder',
-  	'fontSize': '45px',
-  	'lineHeight': '77px',
-  	'textAlign': 'center',
-  	'cursor': 'pointer',
 	'transition': 'all 0.2s ease-in-out 0.1s'
 };
 var submenuActive = {
@@ -357,6 +309,5 @@ function initMenu(data) {
 
 //<div style={controlArrowButtons} onMouseOver = {this.handleMouseOverArrow.bind(this)} onMouseOut={this.handleMouseOutArrow.bind(this)} ><img style = {arrowStyle} src="images/arrowUp.png"></img></div>
 //<div style={controlArrowButtons} onMouseOver = {this.handleMouseOverArrow.bind(this)} onMouseOut={this.handleMouseOutArrow.bind(this)} ><img style = {arrowStyle} src="images/arrowDown.png"></img></div>
->>>>>>> gh-pages
 
 /////////////-----------------------------------------------------------------------
