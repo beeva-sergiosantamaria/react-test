@@ -68,9 +68,8 @@ var subMenuControlButtons = {
 	'height': '60px',
 	'color': 'yellow',
 	'float': 'right',
-	'padding': '0px 0px',
 	'textTransform': 'uppercase',
-	'borderLeft': '6px solid rgba(255, 255, 0, 1)',
+	'borderLeft': '3px solid rgba(255, 255, 0, 1)',
 	'fontWeight': 'bolder',
 	'fontSize': '48px',
 	'textAlign': 'center',
@@ -78,9 +77,8 @@ var subMenuControlButtons = {
 	'transition': 'all 0.2s ease-in-out'
 };
 var controlArrowButtons = {
-	'width': '40px',
+	'width': '100%',
 	'height': '30px',
-	'margin': '0px 5px'
 };
 var arrowStyle = {
 	'height': '25px',
@@ -96,11 +94,37 @@ document.body.style.zoom = "75%";
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-var menuElementsList = [{ 'main': 'main', 'sub': [{ 'name': 'home', 'value': 'home' }, { 'name': 'news', 'value': 'news' }, { 'name': 'calendar', 'value': 'calendar' }] }, { 'main': 'about', 'sub': [{ 'name': 'misión', 'value': 'mision' }, { 'name': 'investigación', 'value': 'investigacion' }, { 'name': 'cómo trabajamos', 'value': 'metodologia' }, { 'name': 'equipo', 'value': 'equipo' }] }, { 'main': 'portfolio', 'sub': [{ 'name': 'todos', 'value': 'todos' }, { 'name': 'eventos', 'value': 'eventos' }, { 'name': 'pilotos', 'value': 'pilotos' }, { 'name': 'prototipos & experimentos', 'value': 'prototipos' }, { 'name': 'talleres', 'value': 'talleres' }] }, { 'main': 'posts', 'sub': [{ 'name': 'posts', 'value': 'posts' }, { 'name': 'blog', 'value': 'blog' }] }, { 'main': 'contact', 'sub': [{ 'name': 'suscribe', 'value': 'suscribe' }, { 'name': 'newsletter', 'value': 'newsletter' }, { 'name': 'rss', 'value': 'rss' }] }];
+var menuElementsList = [
+	{ 'main': 'main', 'sub': [
+		{ 'name': 'home', 'value': 'home' }, 
+		{ 'name': 'news', 'value': 'news' }, 
+		{ 'name': 'calendar', 'value': 'calendar' }] 
+	}, 
+	{ 'main': 'about', 'sub': [
+		{ 'name': 'misión', 'value': 'mision' }, 
+		{ 'name': 'investigación', 'value': 'investigacion' }, 
+		{ 'name': 'cómo trabajamos', 'value': 'metodologia' }, 
+		{ 'name': 'equipo', 'value': 'equipo' }] 
+	},
+	{ 'main': 'portfolio', 'sub': [
+		{ 'name': 'todos', 'value': 'todos' }, 
+		{ 'name': 'eventos', 'value': 'eventos' }, 
+		{ 'name': 'pilotos', 'value': 'pilotos' }, 
+		{ 'name': 'prototipos & experimentos', 'value': 'prototipos' }, 
+		{ 'name': 'talleres', 'value': 'talleres' }] 
+	}, 
+	{ 'main': 'posts', 'sub': [
+		{ 'name': 'posts', 'value': 'posts' }, 
+		{ 'name': 'blog', 'value': 'blog' }] 
+	}, 
+	{ 'main': 'contact', 'sub': [
+		{ 'name': 'suscribe', 'value': 'suscribe' }, 
+		{ 'name': 'newsletter', 'value': 'newsletter' }, 
+		{ 'name': 'rss', 'value': 'rss' }] 
+	}
+];
 
 var propertiesList = [{ 'fontSize': '67px', 'padding': '0px 10px' }, { 'fontSize': '45px', 'padding': '0px 20px' }, { 'fontSize': '22px', 'padding': '0px 20px' }, { 'fontSize': '26px', 'padding': '0px 20px' }, { 'fontSize': '15px', 'padding': '0px 10px' }];
-
-var curretSubMenuList = menuElementsList[0].sub;
 
 var menuActive = 0;
 
@@ -163,31 +187,69 @@ function initMenu(data) {
 		handleRemove: function handleRemove(i) {},
 		menuTransform: function menuTransform(i, lol) {
 			var topValue = ['0px', '-72px', '-120px', '-145px', '-173px'];
-			var activeStatus = lol.target.attributes['data-actived'].value;
-			var menuChildLength = lol.target.parentNode.children.length;
-			curretSubMenuList = menuElementsList[i].sub;
-			if (i == 'up') menuActive = menuActive + 1;else if (i == 'down') menuActive = menuActive - 1;else menuActive = i;
 
-			if (activeStatus == 'false') {
-				this.setState({ 'actual': menuElementsList[i].sub });
-				$('#submenu').css('left', '130px');
-				lol.target.style.padding = '20px 10px';
-				lol.target.style.fontSize = '31px';
-				lol.target.parentNode.style.top = topValue[i];
-				lol.target.parentNode.parentNode.style.height = '60px';
-				lol.target.attributes['data-actived'].value = 'true';
-				for (var a = 0; a < menuChildLength; a++) {
-					if (lol.target.parentNode.children[a].attributes['data-actived'].value == 'false') lol.target.parentNode.children[a].style.opacity = '0';else lol.target.parentNode.children[a].style.opacity = '1';
+			if (i == 'up') {
+				var menuChildLength = $('#itemGroupBox').children().length;
+				if( menuActive > 0 ) {
+					$('#itemGroupBox').children()[menuActive].style.padding = propertiesList[menuActive].padding;
+					$('#itemGroupBox').children()[menuActive].style.fontSize = propertiesList[menuActive].fontSize;
+					$('#itemGroupBox').children()[menuActive].attributes['data-actived'].value = 'false';
+					menuActive = menuActive - 1;
+					lol = $('#itemGroupBox').children()[menuActive];
+					this.setState({ 'actual': menuElementsList[menuActive].sub });
+					lol.style.padding = '20px 10px';
+					lol.style.fontSize = '31px';
+					lol.parentNode.style.top = topValue[menuActive];
+					lol.parentNode.parentNode.style.height = '60px';
+					lol.attributes['data-actived'].value = 'true';
+					for (var a = 0; a < menuChildLength; a++) {
+						if (lol.parentNode.children[a].attributes['data-actived'].value == 'false') lol.parentNode.children[a].style.opacity = '0';else lol.parentNode.children[a].style.opacity = '1';
+					}
 				}
-			} else {
-				$('#submenu').css('left', '-60%');
-				lol.target.style.padding = propertiesList[i].padding;
-				lol.target.style.fontSize = propertiesList[i].fontSize;
-				lol.target.parentNode.style.top = '0px';
-				lol.target.parentNode.parentNode.style.height = '200px';
-				lol.target.attributes['data-actived'].value = 'false';
-				for (var a = 0; a < menuChildLength; a++) {
-					lol.target.parentNode.children[a].style.opacity = '1';
+			} 
+			else if (i == 'down') { 
+				var menuChildLength = $('#itemGroupBox').children().length;
+				if( menuActive < menuChildLength-1 ) {
+					$('#itemGroupBox').children()[menuActive].style.padding = propertiesList[menuActive].padding;
+					$('#itemGroupBox').children()[menuActive].style.fontSize = propertiesList[menuActive].fontSize;
+					$('#itemGroupBox').children()[menuActive].attributes['data-actived'].value = 'false';
+					menuActive = menuActive + 1;
+					this.setState({ 'actual': menuElementsList[menuActive].sub });
+					lol = $('#itemGroupBox').children()[menuActive];lol.style.padding = '20px 10px';
+					lol.style.fontSize = '31px';
+					lol.parentNode.style.top = topValue[menuActive];
+					lol.parentNode.parentNode.style.height = '60px';
+					lol.attributes['data-actived'].value = 'true';
+					for (var a = 0; a < menuChildLength; a++) {
+						if (lol.parentNode.children[a].attributes['data-actived'].value == 'false') lol.parentNode.children[a].style.opacity = '0';else lol.parentNode.children[a].style.opacity = '1';
+					}
+				}
+			}	 
+			else { 
+				var activeStatus = lol.target.attributes['data-actived'].value;
+				var menuChildLength = lol.target.parentNode.children.length;
+				menuActive = i;
+				if (activeStatus == 'false') {
+					this.setState({ 'actual': menuElementsList[i].sub });
+					$('#submenu').css('left', '130px');
+					lol.target.style.padding = '20px 10px';
+					lol.target.style.fontSize = '31px';
+					lol.target.parentNode.style.top = topValue[i];
+					lol.target.parentNode.parentNode.style.height = '60px';
+					lol.target.attributes['data-actived'].value = 'true';
+					for (var a = 0; a < menuChildLength; a++) {
+						if (lol.target.parentNode.children[a].attributes['data-actived'].value == 'false') lol.target.parentNode.children[a].style.opacity = '0';else lol.target.parentNode.children[a].style.opacity = '1';
+					}
+				} else {
+					$('#submenu').css('left', '-60%');
+					lol.target.style.padding = propertiesList[i].padding;
+					lol.target.style.fontSize = propertiesList[i].fontSize;
+					lol.target.parentNode.style.top = '0px';
+					lol.target.parentNode.parentNode.style.height = '200px';
+					lol.target.attributes['data-actived'].value = 'false';
+					for (var a = 0; a < menuChildLength; a++) {
+						lol.target.parentNode.children[a].style.opacity = '1';
+					}
 				}
 			}
 		},
@@ -211,7 +273,20 @@ function initMenu(data) {
 						this.state.actual.map(function (element, i) {
 							return React.createElement(SubMenuItem, { name: element.name, key: element.value, value: element.value });
 						}),
-						React.createElement('div', { style: subMenuControlButtons })
+						React.createElement(
+							'div', 
+							{ style: subMenuControlButtons },
+							React.createElement(
+								'div',
+								{style: controlArrowButtons, onClick: this.menuTransform.bind(this,'up'), onMouseOver: this.handleMouseOverArrow.bind(this), onMouseOut: this.handleMouseOutArrow.bind(this) },
+								React.createElement('img',{style: arrowStyle, src: "images/arrowUp.png"})
+							),
+							React.createElement(
+								'div',
+								{style: controlArrowButtons, onClick: this.menuTransform.bind(this, 'down'), onMouseOver: this.handleMouseOverArrow.bind(this), onMouseOut: this.handleMouseOutArrow.bind(this) },
+								React.createElement('img',{style: arrowStyle, src: "images/arrowDown.png"})
+							)
+						)
 					)
 				),
 				React.createElement(
